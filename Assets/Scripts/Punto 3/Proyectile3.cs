@@ -1,23 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Proyectile3 : BaseProyectile
 {
-    ParticleSystem particles;
+    [SerializeField] ParticleSystem particles;
     MeshRenderer meshRenderer;
 
-    void Start()
-    {
-        particles = GetComponent<ParticleSystem>();
-    }
     public override void ProyectileAction(Collision collision)
     {
-        base.ProyectileAction(collision);
-        particles.Play();
-        if(meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.enabled = false;
-        Invoke("Recicle", 1f);
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            particles.Play();
+            if (meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer.enabled = false;
+            Invoke("Recicle", 2f);
+        }
     }
     public override void MakeVisible()
     {

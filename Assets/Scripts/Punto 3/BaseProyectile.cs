@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+
 public abstract class BaseProyectile : MonoBehaviour
 {
     Rigidbody bulletRB;

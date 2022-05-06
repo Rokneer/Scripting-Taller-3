@@ -24,12 +24,12 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButton(0) && !isLocked)
+        if(Input.GetButtonDown("Fire1") && !isLocked)
         {
             Rigidbody proyectile = currentPool.GetProyectile();
             proyectile.transform.position = transform.position;
         }
-        if (Input.GetMouseButton(1)) ChangeProyectile();
+        if (Input.GetButtonDown("Fire2")) ChangeProyectile();
     }
     void ChangeProyectile()
     {
